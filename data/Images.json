@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Sunset View",
+    "category": "nature",
+    "url": "https://via.placeholder.com/300x200?text=Sunset"
+  },
+  {
+    "id": 2,
+    "title": "Modern Car",
+    "category": "cars",
+    "url": "https://via.placeholder.com/300x200?text=Car"
+  },
+  {
+    "id": 3,
+    "title": "City Lights",
+    "category": "cities",
+    "url": "https://via.placeholder.com/300x200?text=City"
+  },
+  {
+    "id": 4,
+    "title": "Forest Trail",
+    "category": "nature",
+    "url": "https://via.placeholder.com/300x200?text=Forest"
+  }
+]
