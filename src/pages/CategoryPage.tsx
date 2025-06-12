@@ -9,7 +9,7 @@ import SearchBar from "../components/SearchBar";
 const CategoryPage = () => {
     const { category } = useParams<{ category: string }>();
     const imagesData = rawData as ImageItem[];
-    const [catQuery,setCatQuery] = useState('');
+    const [catQuery, setCatQuery] = useState('');
     const [catSuggestions, setCatSuggestions] = useState<string[]>([]);
     const [catFilteredImages, setCatFilteredImages] = useState<ImageItem[]>([]);
 
@@ -17,7 +17,7 @@ const CategoryPage = () => {
         () => imagesData.filter(
                 (img) => img.category.toLowerCase() === (category || "").toLowerCase()
             ),
-            [category,imagesData]
+            [category, imagesData]
         );
 
     useEffect(() => {
@@ -46,78 +46,49 @@ const CategoryPage = () => {
         );
 
          setCatFilteredImages(matchedImages);
-            }, [catQuery, filteredImages, category]);
-    
-        /*
-        const matchedSuggestions = imagesData
-          .map((img) => img.title)
-          .filter((title) => title.toLowerCase().includes(lowerQuery));
-    
-        setCatSuggestions([...new Set(matchedSuggestions)]);
-    
-        const matchedImages = imagesData.filter(
-          (img) =>
-            img.title.toLowerCase().includes(lowerQuery) ||
-            img.category.toLowerCase().includes(lowerQuery)
-        );
-        setCatFilteredImages(matchedImages);
-      }, [catQuery]);
-        */
-      const handleSuggestionClick = (text: string) => {
-        setCatQuery(text);
-      };
+    }, [catQuery, filteredImages, category]);
       
+    const handleSuggestionClick = (text: string) => {
+        setCatQuery(text);
+    };
     
     return (
-    <div style={{ minHeight: "100vh", background: "#fafbfc" }}>
-      <header
-        style={{
-          width: "100%",
-          padding: "24px 0",
-          background: "#222",
-          color: "#fff",
-          textAlign: "center",
-          fontSize: "2rem",
-          fontWeight: "bold",
-          letterSpacing: "2px",
-        }}
-      >
-        {category ? `${category.charAt(0).toUpperCase() + category.slice(1)} Images` : "Category"}
-      </header>
-      <div style={{ display: "flex", minHeight: "calc(100vh - 80px)" }}>
-        <SideBar />
-        <main style={{ flex: 1, padding: "40px" }}>
-           <div style={{ width: '100%', maxWidth: 400, margin: '30px auto 10px auto' }}>
-              <SearchBar query={catQuery} onChange={setCatQuery} />
-              {catSuggestions.length > 0 && (
-              <ul style={{ listStyleType: 'none', margin: '5px 0 0 0', padding: 0, background: '#fff', border: '1px solid #eee', borderRadius: 4 }}>
-                {catSuggestions.map((s, idx) => (
-                  <li
-                    key={idx}
-                    onClick={() => handleSuggestionClick(s)}
-                    style={{
-                      cursor: 'pointer',
-                      padding: '8px 12px',
-                      borderBottom: idx !== catSuggestions.length - 1 ? '1px solid #eee' : undefined,
-                    }}
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            )}
-           </div>
-          {catFilteredImages.length === 0 && catQuery.trim() !== '' ? (
-            <div style={{ textAlign: 'center', marginTop: 40, color: '#888' }}>
-                No results found in this category.
+        <div className="app-container">
+            <header className="app-header">
+                {category ? `${category.charAt(0).toUpperCase() + category.slice(1)} Images` : "Category"}
+            </header>
+            <div className="app-body">
+                <SideBar />
+                <main className="app-main">
+                    <div className="search-container">
+                        <SearchBar query={catQuery} onChange={setCatQuery} />
+                        {catSuggestions.length > 0 && (
+                            <ul className="suggestions-list">
+                                {catSuggestions.map((s, idx) => (
+                                    <li
+                                        key={idx}
+                                        onClick={() => handleSuggestionClick(s)}
+                                        className="suggestion-item"
+                                    >
+                                        {s}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                    <div className="content-area">
+                        {catFilteredImages.length === 0 && catQuery.trim() !== '' ? (
+                            <div className="no-results">
+                                No results found in this category.
+                            </div>
+                        ) : (
+                            <ImageGrid images={catFilteredImages} />
+                        )}
+                    </div>
+                </main>
             </div>
-            ) : (
-            <ImageGrid images={catFilteredImages} />
-            )}
-        </main>
-      </div>
-    </div>
-  );
-    
+        </div>
+    );
 };
+
 export default CategoryPage;

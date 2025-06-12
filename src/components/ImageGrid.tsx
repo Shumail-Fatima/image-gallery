@@ -1,3 +1,5 @@
+import ImageCard from "./ImageCard";
+
 type ImageItem = {
   id: number;
   title: string;
@@ -14,16 +16,13 @@ const ImageGrid = ({ images }: Props) => {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
         gap: '20px',
-        padding: '20px',
+        width: '100%',
       }}
     >
       {images.map((img) => (
-        <div key={img.id}>
-          <img src={img.url} alt={img.title} style={{ width: '100%', borderRadius: '8px' }} />
-          <p style={{ textAlign: 'center' }}>{img.title}</p>
-        </div>
+        <ImageCard key={img.id} image={img} />
       ))}
     </div>
   );
