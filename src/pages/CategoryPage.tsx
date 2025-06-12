@@ -28,7 +28,27 @@ const CategoryPage = () => {
         }
     
         const lowerQuery = catQuery.toLowerCase();
+        
+        const categoryImages = filteredImages.filter(
+          (img) => img.category.toLowerCase() === (category || "").toLowerCase()
+        );  
+
+        const matchedSuggestions = categoryImages
+          .map((img) => img.title)
+          .filter((title) => title.toLowerCase().includes(lowerQuery)); 
+
+        setCatSuggestions([...new Set(matchedSuggestions)]);
+
+        const matchedImages = categoryImages.filter(
+          (img) =>
+            img.title.toLowerCase().includes(lowerQuery) ||
+            img.category.toLowerCase().includes(lowerQuery)
+        );
+
+         setCatFilteredImages(matchedImages);
+            }, [catQuery, filteredImages, category]);
     
+        /*
         const matchedSuggestions = imagesData
           .map((img) => img.title)
           .filter((title) => title.toLowerCase().includes(lowerQuery));
@@ -42,12 +62,13 @@ const CategoryPage = () => {
         );
         setCatFilteredImages(matchedImages);
       }, [catQuery]);
-    
+        */
       const handleSuggestionClick = (text: string) => {
         setCatQuery(text);
       };
-
-        return (
+      
+    
+    return (
     <div style={{ minHeight: "100vh", background: "#fafbfc" }}>
       <header
         style={{
@@ -86,7 +107,13 @@ const CategoryPage = () => {
               </ul>
             )}
            </div>
-          <ImageGrid images={catFilteredImages} />
+          {catFilteredImages.length === 0 && catQuery.trim() !== '' ? (
+            <div style={{ textAlign: 'center', marginTop: 40, color: '#888' }}>
+                No results found in this category.
+            </div>
+            ) : (
+            <ImageGrid images={catFilteredImages} />
+            )}
         </main>
       </div>
     </div>
