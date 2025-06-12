@@ -4,12 +4,24 @@ const categories = ['nature', 'cars', 'cities'];
 
 const SideBar = () =>{
     return(
-        <aside className="w-64 p-4 border-r">
-            <ul>
+        <aside style={{ width: 200, background: '#f4f4f4', padding: '32px 0', minHeight: '100%' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {categories.map((cat) => (
                     <li key={cat}>
-                        <NavLink to={`/category/${cat}`} className={({ isActive }) => isActive ? "active" : ""}>
-                            {cat.charAt(0) .toUpperCase() + cat.slice(1)}
+                        <NavLink
+                            to={`/category/${cat}`}
+                            style={({ isActive }) => ({
+                                display: 'block',
+                                padding: '12px 24px',
+                                color: isActive ? '#fff' : '#333',
+                                background: isActive ? '#007bff' : 'none',
+                                textDecoration: 'none',
+                                borderRadius: 4,
+                                marginBottom: 4,
+                                fontWeight: 500
+                            })}
+                        >
+                            {cat.charAt(0).toUpperCase() + cat.slice(1)}
                         </NavLink>
                     </li>
                 ))}
