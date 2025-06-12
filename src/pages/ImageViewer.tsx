@@ -1,15 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
 import rawData from "../data/Images.json";
+import type { ImageItem } from "../types/Image";
 
 const ImageViewer = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const imagesData = rawData as Array<{
-        id: number;
-        title: string;
-        category: string;
-        url: string;
-    }>;
+    const imagesData = rawData as ImageItem[];
 
     const image = imagesData.find((img) => img.id.toString() === id);
     if (!image) {

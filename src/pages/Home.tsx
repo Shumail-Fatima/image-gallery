@@ -3,14 +3,9 @@ import rawData from '../data/Images.json';
 import SearchBar from '../components/SearchBar';
 import ImageGrid from '../components/ImageGrid';
 import SideBar from '../components/SideBar';
-//import type { ImageItem } from '../types/Image';
+import type { ImageItem } from '../types/Image';
 
-type ImageItem = {
-  id: number;
-  title: string;
-  category: string;
-  url: string;
-};
+
 
 const imagesData = rawData as ImageItem[];
 
