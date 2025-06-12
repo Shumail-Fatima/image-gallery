@@ -1,5 +1,5 @@
 export type ImageItem = {
-  title: string | undefined;
+  title: string;
   id: number;
   type: string;
   category: string;

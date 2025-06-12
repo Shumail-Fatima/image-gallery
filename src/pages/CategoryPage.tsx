@@ -3,15 +3,11 @@ import rawData from "../data/Images.json";
 import SideBar from "../components/SideBar";
 import ImageGrid from "../components/ImageGrid";
 import { useMemo } from "react";
+import type { ImageItem } from "../types/Image";
 
 const CategoryPage = () => {
     const { category } = useParams<{ category: string }>();
-    const imagesData = rawData as Array<{
-        id: number;
-        title: string;
-        category: string;
-        url: string;
-    }>;
+    const imagesData = rawData as ImageItem[];
 
     const filteredImages = useMemo(
         () => imagesData.filter(
