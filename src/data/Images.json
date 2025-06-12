@@ -3,24 +3,24 @@
     "id": 1,
     "title": "Sunset View",
     "category": "nature",
-    "url": "https://images.app.goo.gl/7E4iX46p2tYtPMk57"
+    "url": "https://picsum.photos/id/1015/600/400"
   },
   {
     "id": 2,
     "title": "Modern Car",
     "category": "cars",
-    "url": "https://images.app.goo.gl/sVPWPDFhfHCXpbgJ9"
+    "url": "https://picsum.photos/id/1011/600/400"
   },
   {
     "id": 3,
     "title": "City Lights",
     "category": "cities",
-    "url": "https://images.app.goo.gl/Vz3zcmY1AADvinNQ6"
+    "url": "https://picsum.photos/id/1012/600/400"
   },
   {
     "id": 4,
     "title": "Forest Trail",
     "category": "nature",
-    "url": "https://images.app.goo.gl/GXbpc8wgCAxfNnY3A"
+    "url": "https://picsum.photos/id/1013/600/400"
   }
 ]

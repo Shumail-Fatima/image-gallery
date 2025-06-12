@@ -6,6 +6,24 @@ const SideBar = () =>{
     return(
         <aside style={{ width: 200, background: '#f4f4f4', padding: '32px 0', minHeight: '100%' }}>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li>
+                    <NavLink to="/"
+                        style={({isActive}) => (
+                            {
+                            display: 'block',
+                            padding: '12px 24px',
+                            color: isActive ? '#fff' : '#333',
+                            background: isActive ? '#007bff' : 'none',
+                            textDecoration: 'none',
+                            borderRadius: 4,
+                            marginBottom: 12,
+                            fontWeight: 700
+                            }
+                        )}
+                    >
+                        Home
+                    </NavLink>
+                </li>
                 {categories.map((cat) => (
                     <li key={cat}>
                         <NavLink
