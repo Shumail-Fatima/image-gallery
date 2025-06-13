@@ -4,7 +4,7 @@ const categories = ['nature', 'cars', 'cities'];
 
 const SideBar = () =>{
     return(
-        <aside style={{ width: 200, background: '#f4f4f4', padding: '32px 0', minHeight: '100%' }}>
+        <aside className="app-sidebar">
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 <li>
                     <NavLink to="/"

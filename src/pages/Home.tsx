@@ -46,26 +46,22 @@ const HomePage = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#fafbfc' }}>
-      <header style={{ width: '100%', padding: '24px 0', background: '#222', color: '#fff', textAlign: 'center', fontSize: '2rem', fontWeight: 'bold', letterSpacing: '2px' }}>
+    <div className="app-container">
+      <header className="app-header">
         Image Gallery
       </header>
-      <div style={{ display: 'flex', minHeight: 'calc(100vh - 80px)' }}>
+      <div className="app-body">
         <SideBar />
-        <main style={{ flex: 1, padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ width: '100%', maxWidth: 400, margin: '30px auto 10px auto' }}>
+        <main className="app-main">
+          <div className="search-container">
             <SearchBar query={query} onChange={setQuery} />
             {suggestions.length > 0 && (
-              <ul style={{ listStyleType: 'none', margin: '5px 0 0 0', padding: 0, background: '#fff', border: '1px solid #eee', borderRadius: 4 }}>
+              <ul className="suggestions-list">
                 {suggestions.map((s, idx) => (
                   <li
                     key={idx}
                     onClick={() => handleSuggestionClick(s)}
-                    style={{
-                      cursor: 'pointer',
-                      padding: '8px 12px',
-                      borderBottom: idx !== suggestions.length - 1 ? '1px solid #eee' : undefined,
-                    }}
+                    className="suggestion-item"
                   >
                     {s}
                   </li>
@@ -73,8 +69,14 @@ const HomePage = () => {
               </ul>
             )}
           </div>
-          <div style={{ width: '100%' }}>
-            <ImageGrid images={filteredImages} />
+          <div className="content-area">
+            {filteredImages.length === 0 && query.trim() !== '' ? (
+              <div className="no-results">
+                No results found.
+              </div>
+            ) : (
+              <ImageGrid images={filteredImages} />
+            )}
           </div>
         </main>
       </div>
