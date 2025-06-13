@@ -30,3 +30,4 @@ const ImageGrid = ({ images }: Props) => {
 };
 
 export default ImageGrid;
+

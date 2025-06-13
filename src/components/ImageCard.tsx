@@ -53,3 +53,5 @@ const ImageCard = ({image}: Props) => {
 }
 
 export default ImageCard;
+
+

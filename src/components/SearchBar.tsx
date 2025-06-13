@@ -1,3 +1,4 @@
+
 type Props = {
     query: string;
     onChange: (term: string) => void;
