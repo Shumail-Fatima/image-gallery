@@ -5,8 +5,6 @@ import ImageGrid from '../components/ImageGrid';
 import SideBar from '../components/SideBar';
 import type { ImageItem } from '../types/Image';
 
-
-
 const imagesData = rawData as ImageItem[];
 
 const HomePage = () => {
