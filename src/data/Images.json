@@ -22,5 +22,41 @@
     "title": "Forest Trail",
     "category": "nature",
     "url": "https://picsum.photos/id/1013/600/400"
-  }
+  },
+  {
+  "id": 5,
+  "title": "Mountain Lake",
+  "category": "nature",
+  "url": "https://picsum.photos/id/1016/600/400"
+},
+{
+  "id": 6,
+  "title": "Classic Car",
+  "category": "cars",
+  "url": "https://picsum.photos/id/1018/600/400"
+},
+{
+  "id": 7,
+  "title": "Urban Skyline",
+  "category": "cities",
+  "url": "https://picsum.photos/id/1020/600/400"
+},
+{
+  "id": 8,
+  "title": "Desert Road",
+  "category": "cars",
+  "url": "https://picsum.photos/id/1022/600/400"
+},
+{
+  "id": 9,
+  "title": "Rainy Street",
+  "category": "cities",
+  "url": "https://picsum.photos/id/1024/600/400"
+},
+{
+  "id": 10,
+  "title": "Green Hills",
+  "category": "nature",
+  "url": "https://picsum.photos/id/1025/600/400"
+}
 ]
