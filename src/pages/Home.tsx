@@ -8,7 +8,7 @@ import type { ImageItem } from '../types/Image';
 const imagesData = rawData as ImageItem[];
 
 const HomePage = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>(''); // set string type for this
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [filteredImages, setFilteredImages] = useState<ImageItem[]>([]);
 
@@ -31,7 +31,7 @@ const HomePage = () => {
 
     setSuggestions([...new Set(matchedSuggestions)]);
 
-    const matchedImages = imagesData.filter(
+    const matchedImages = imagesData?.filter(
       (img) =>
         img.title.toLowerCase().includes(lowerQuery) ||
         img.category.toLowerCase().includes(lowerQuery)
