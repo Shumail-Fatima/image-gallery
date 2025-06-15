@@ -11,6 +11,10 @@ const HomePage = () => {
   const [query, setQuery] = useState<string>(''); // set string type for this
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [filteredImages, setFilteredImages] = useState<ImageItem[]>([]);
+  const [page, setPage] = useState(1);
+  const pageSize = 6;
+  const totalPages = Math.ceil(filteredImages.length / pageSize);
+
 
   useEffect(() => {
     setFilteredImages(imagesData);
@@ -43,6 +47,13 @@ const HomePage = () => {
     setQuery(text);
   };
 
+  useEffect(() => {
+    setPage(1); // Reset to first page on search/filter change
+  }, [query]);
+
+  const paginatedImages = filteredImages.slice((page - 1) * pageSize, page * pageSize);
+
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -73,8 +84,15 @@ const HomePage = () => {
                 No results found.
               </div>
             ) : (
-              <ImageGrid images={filteredImages} />
-            )}
+              <>
+                <ImageGrid images={paginatedImages} />
+                <div style={{ marginTop: 20 }}>
+                  <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+                  <span style={{ margin: '0 10px' }}>{page} / {totalPages}</span>
+                  <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</button>
+                </div>
+              </>
+              )}
           </div>
         </main>
       </div>
