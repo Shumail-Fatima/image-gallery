@@ -5,6 +5,7 @@ import ImageGrid from "../components/ImageGrid";
 import { useEffect, useMemo, useState } from "react";
 import type { ImageItem } from "../types/Image";
 import SearchBar from "../components/SearchBar";
+import SideMenu from "../components/SideMenu";
 
 
 const CategoryPage = () => {
@@ -16,6 +17,7 @@ const CategoryPage = () => {
     const [catPage, catSetPage] = useState(1);
     const catPageSize = 6;
     const catTotalPages = Math.ceil(catFilteredImages.length / catPageSize);
+    const [catSidebarVisible, setCatSidebarVisible] = useState(false);
 
     const filteredImages = useMemo(
         () => imagesData.filter(
@@ -77,14 +79,18 @@ const CategoryPage = () => {
 
     const paginatedImages = catFilteredImages.slice((catPage - 1) * catPageSize, catPage * catPageSize);
       
+    const catToggleSidebar = () => {
+        setCatSidebarVisible(!catSidebarVisible);
+    }
     
      return (
         <div className="app-container">
             <header className="app-header">
+                <SideMenu onClick={catToggleSidebar} />
                 {category ? `${category.charAt(0).toUpperCase() + category.slice(1)} Images` : "Category"}
             </header>
             <div className="app-body">
-                <SideBar />
+                <SideBar isVisible={catSidebarVisible} />
                 <main className="app-main">
                     <div className="search-container">
                         <SearchBar query={catQuery} onChange={setCatQuery} />

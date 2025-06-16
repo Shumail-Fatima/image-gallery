@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar';
 import ImageGrid from '../components/ImageGrid';
 import SideBar from '../components/SideBar';
 import type { ImageItem } from '../types/Image';
+import SideMenu from '../components/SideMenu';
 
 
 const imagesData = rawData as ImageItem[];
@@ -15,7 +16,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const pageSize = 6;
   const totalPages = Math.ceil(filteredImages.length / pageSize);
-
+  const [sidebarVisible, setSidebarVisible] = useState(false);
 
   useEffect(() => {
     setFilteredImages(imagesData);
@@ -54,14 +55,19 @@ const HomePage = () => {
 
   const paginatedImages = filteredImages.slice((page - 1) * pageSize, page * pageSize);
 
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  }
+
 
   return (
     <div className="app-container">
       <header className="app-header">
+        <SideMenu onClick={toggleSidebar} />
         Image Gallery
       </header>
+      <SideBar isVisible={sidebarVisible}/>
       <div className="app-body">
-        <SideBar />
         <main className="app-main">
           <div className="search-container">
             <SearchBar query={query} onChange={setQuery} />

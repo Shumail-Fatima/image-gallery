@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 const categories = ['nature', 'cars', 'cities'];
 
 
-const SideBar = () =>{
+const SideBar = ({isVisible} : {isVisible: boolean}) =>{
     return(
-        <aside className="app-sidebar">
+        <aside className={`app-sidebar ${isVisible ? 'visible' : ''}`}>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 <li>
                     <NavLink to="/"

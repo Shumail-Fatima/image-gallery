@@ -91,9 +91,6 @@ button:focus-visible {
   padding-top: 50px;
 }
 
-
-
-
 .app-sidebar {
   position: fixed;
   top: 80px;
@@ -105,8 +102,14 @@ button:focus-visible {
   overflow-y: auto;
   z-index: 999;
   text-align: left;
-  align-items: flex-start;
-  transition: width 0.3s;
+  /*align-items: flex-start;  -----------*/
+  transition: transform 0.3s ease;
+  /*transition: width 0.3s;   -----------*/
+  transform: translateX(-100%);
+}
+
+.app-sidebar.visible{
+  transform: translateX(0);
 }
 
 .app-main {
@@ -179,7 +182,7 @@ button:focus-visible {
   font-size: 18px;
 }
 
-/*
+/* Responsive styles for tablets and mobile */
 @media (max-width: 900px) {
   .app-sidebar {
     width: 140px;
@@ -190,7 +193,7 @@ button:focus-visible {
 @media (max-width: 600px) {
   .app-sidebar {
     position: fixed;
-    top: 64px; 
+    top: 64px; /* Adjust if your header height changes on mobile */
     left: 0;
     width: 100vw;
     height: calc(100vh - 64px);
@@ -200,10 +203,9 @@ button:focus-visible {
     box-shadow: 2px 0 8px rgba(0,0,0,0.05);
   }
   .app-body {
-    padding-top: 64px; 
+    padding-top: 64px; /* Match header height */
   }
-}*/
-
+}
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
