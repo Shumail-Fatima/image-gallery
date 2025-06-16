@@ -12,6 +12,9 @@ const CategoryPage = () => {
     const [catQuery,setCatQuery] = useState('');
     const [catSuggestions, setCatSuggestions] = useState<string[]>([]);
     const [catFilteredImages, setCatFilteredImages] = useState<ImageItem[]>([]);
+    const [catPage, catSetPage] = useState(1);
+    const catPageSize = 6;
+    const catTotalPages = Math.ceil(catFilteredImages.length / catPageSize);
 
     const filteredImages = useMemo(
         () => imagesData.filter(
@@ -66,6 +69,12 @@ const CategoryPage = () => {
       const handleSuggestionClick = (text: string) => {
         setCatQuery(text);
       };
+
+    useEffect(() => {
+        catSetPage(1); // Reset to first page on search/filter change
+    }, [catQuery]);
+
+    const paginatedImages = catFilteredImages.slice((catPage - 1) * catPageSize, catPage * catPageSize);
       
     
      return (
@@ -98,7 +107,14 @@ const CategoryPage = () => {
                                 No results found in this category.
                             </div>
                         ) : (
-                            <ImageGrid images={catFilteredImages} />
+                            <>
+                                <ImageGrid images={paginatedImages} />
+                                <div style={{ marginTop: 20 }}>
+                                <button disabled={catPage === 1} onClick={() => catSetPage(catPage - 1)}>Previous</button>
+                                <span style={{ margin: '0 10px' }}>{catPage} / {catTotalPages}</span>
+                                <button disabled={catPage === catTotalPages} onClick={() => catSetPage(catPage + 1)}>Next</button>
+                                </div>
+                            </>
                         )}
                     </div>
                 </main>
