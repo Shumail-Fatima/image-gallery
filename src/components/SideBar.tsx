@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const categories = ['nature', 'cars', 'cities'];
 
+
 const SideBar = () =>{
     return(
         <aside className="app-sidebar">

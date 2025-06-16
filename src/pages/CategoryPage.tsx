@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { ImageItem } from "../types/Image";
 import SearchBar from "../components/SearchBar";
 
+
 const CategoryPage = () => {
     const { category } = useParams<{ category: string }>();
     const imagesData = rawData as ImageItem[];
