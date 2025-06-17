@@ -15,7 +15,7 @@ const CategoryPage = () => {
     const [catSuggestions, setCatSuggestions] = useState<string[]>([]);
     const [catFilteredImages, setCatFilteredImages] = useState<ImageItem[]>([]);
     const [catPage, catSetPage] = useState(1);
-    const catPageSize = 6;
+    const catPageSize = 8;
     const catTotalPages = Math.ceil(catFilteredImages.length / catPageSize);
     const [catSidebarVisible, setCatSidebarVisible] = useState(false);
 

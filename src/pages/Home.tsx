@@ -14,7 +14,7 @@ const HomePage = () => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [filteredImages, setFilteredImages] = useState<ImageItem[]>([]);
   const [page, setPage] = useState(1);
-  const pageSize = 6;
+  const pageSize = 8;
   const totalPages = Math.ceil(filteredImages.length / pageSize);
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
